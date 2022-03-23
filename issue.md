@@ -64,7 +64,7 @@
 
 （8）每天进行适量身体活动；
 
-（9）工作每90min休息片刻（根据情况自行调整）
+（9）工作每90min休息片刻（根据情况做调整）
 
 # *关于将项目上传到GitHub等仓库的操作
 
@@ -101,11 +101,11 @@ https://github.com/
 
 3.登录GitHub，进入首页，点击New
 
-![](E:\issue_md\image\Snipaste_2021-12-15_15-46-44.jpg)
+![](issue.assets/Snipaste_2021-12-15_15-46-44-16480059672561.jpg)
 
 4.创建仓库
 
-![](E:\issue_md\image\Snipaste_2021-12-15_15-49-32.jpg)
+![](issue.assets/Snipaste_2021-12-15_15-49-32.jpg)
 
 5.创建成功后可以看HTTPS地址和SSH地址
 
