@@ -1207,3 +1207,179 @@ build: {
 
 常量：全大写_隔开
 
+# *nvm与nrm的安装
+
+安装前的注意事项：
+
+**如果之前安装过node请先卸载之前的node后重启**
+
+- Windows设置 --> 应用--> 找到Node-->点击卸载
+- 重启电脑（或者从任务管理器中杀死所有Node相关的进程）
+- 寻找以下文件夹并删除他们。根据您安装的版本，这些文件可能存在也可能不存在：
+- C:\Program Files (x86)\Nodejs
+- C:\Program Files\Nodejs
+- C:\Users{User}\AppData\Roaming\npm（或%appdata%\npm）
+- C:\Users{User}\AppData\Roaming\npm-cache（或%appdata%\npm-cache）
+- 检查%PATH%环境变量，确保没有引用Nodejs和npm的存在
+- 重启（重启大法解决90%问题）
+- nvm安装位置，看自己决定，但是**安装路径不能有空格**
+
+
+
+## 一、NVM
+
+`Nvm` 可以切换 `node` 与 `npm` 版本，在开发不同项目时，可能会用到不同的 `node` 与 `npm` 版本，所以使用 `nvm` 可以方便的在不同 `node` 与 `npm` 版本之间进行切换。
+
+### 写在前面
+
+- 在安装 Nvm 之前，先将之前安装的 node 进行卸载。否则可能会出现无法切换 node 版本的问题
+- 将之前安装的全局插件删除掉，否则可能会导致 nvm 命令不起作用。文件目录如下
+
+```
+C:\Users\Administrator\AppData\Roaming\npm
+C:\Users\Administrator\AppData\Roaming\npm-cache
+复制代码
+```
+
+### nvm 的安装
+
+下载 nvm 插件，安装地址： [Github： Download nvm-windows （nvm-setup.zip）](https://link.juejin.cn?target=https%3A%2F%2Fgithub.com%2Fcoreybutler%2Fnvm-windows%2Freleases)。
+
+下载完成，解压文件之后，双击进行安装：
+
+- 1. 设置 
+
+     ```
+     nvm
+     ```
+
+      安装目录，这里的路径可以根据自己的需要进行填写，不要包含中文名
+
+     ![第一步](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/3/19/169937e724d33e5d~tplv-t2oaga2asx-zoom-in-crop-mark:1304:0:0:0.awebp)
+
+- 1. 设置 
+
+     ```
+     nodejs
+     ```
+
+      各版本安装目录。这个目录是 
+
+     ```
+     nvm install node版本
+     ```
+
+      时存放 
+
+     ```
+     nodejs
+     ```
+
+      的目录
+
+     ![第二步](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/3/19/169937ebba82ce77~tplv-t2oaga2asx-zoom-in-crop-mark:1304:0:0:0.awebp)
+
+- 1. 安装完成，在命令行输入：`nvm version`，查看到对应的版本号，说明 nvm 安装成功了。
+
+### nvm 常用命令
+
+- `nvm install latest`：   安装最新的 `nodejs` 版本
+- `nvm install 11.12.0`：  安装对应的 `nodejs` 版本
+- `nvm uninstall 11.12.0`：卸载对应的 `nodejs` 版本
+- `nvm list available`：   列出所有可用的 `nodejs` 版本
+- `nvm list`：             查看 `nvm` 列出已经安装的 `nodejs` 版本
+- `nvm use 11.12.0`：      使用对应的 `nodejs` 版本
+- 更多命令在命令行输入 `nvm` 即可查看
+
+### 常见问题
+
+- 提示 nvm 不是内部或外部命令的问题
+
+  - 将之前 npm 安装的全局包删除掉。文件目录如下：
+
+  ```
+  C:\Users\Administrator\AppData\Roaming\npm
+  C:\Users\Administrator\AppData\Roaming\npm-cache
+  复制代码
+  ```
+
+- nvm 切换 node 版本无效的问题
+
+  - 卸载原来安装的 node 版本与全局安装的包
+
+- nvm 下载速度慢的问题
+
+  - 在 nvm 安装目录下找到 `settings.txt` 文件，添加下面两行代码：
+
+  ```
+  root: D:\DevTools\NVM\nvm
+  path: D:\DevTools\NVM\nodejs
+  + node_mirror: https://npm.taobao.org/mirrors/node/
+  + npm_mirror: https://npm.taobao.org/mirrors/npm/
+  复制代码
+  ```
+
+------
+
+## 二、NRM
+
+在使用 npm 的过程中，可能插件安装速度比较慢，我们可能会使用淘宝源对插件进行下载安装。或者在公司内部，有一些私有的插件，需要使用公司的源才可以下载。这种情况，我们就需要设置不同的源来进行下载。每次手动设置相对比较麻烦。而 nrm 可以很好的解决这个问题。
+
+### nrm 的安装
+
+```
+# 全局安装 nrm
+$ npm install nrm -g
+复制代码
+```
+
+安装完成后，输入命令 `nrm ls`，可以看到默认已经有了 6 个源（带 * 号的为当前使用的源）
+
+```
+* npm ---- https://registry.npmjs.org/
+  cnpm --- http://r.cnpmjs.org/
+  taobao - https://registry.npm.taobao.org/
+  nj ----- https://registry.nodejitsu.com/
+  npmMirror  https://skimdb.npmjs.com/registry/
+  edunpm - http://registry.enpmjs.org/
+复制代码
+```
+
+输入 `nrm use taobao`，即切换 registry 到 taobao，即可使用淘宝的源进行插件的安装下载了。
+
+### nrm 常用命令
+
+- `nrm ls`              ：查看所有配置好的源以及对应名称
+- `nrm add company http://npm.xxx.cn`：添加源，`company` 是名称，可以自行命名，后面是源的 `url` 地址
+- `nrm del company`     ：删除源，根据名称 `company` 可以删除对应的源
+- `nrm test [registry]` ：测试源的速度，不加对应的 `registry` 名称，测试所有源的速度，添加对应的名称，比如 `company`，就是测试 `company` 对应的源的速度
+- `nrm use company`     ：切换源，即可使用 `company` 对应名称的源
+- 更多命令在命令行输入 `nrm` 即可查看
+
+------
+
+## 三、额外知识点
+
+- 安装 cnpm：`npm install -g cnpm --registry=https://registry.npm.taobao.org`
+- 设置 npm 全局包的安装路径（如果不想自己控制路径就不需要做下面这些操作）：
+  - 执行命令：`npm config set prefix "D:\DevTools\Nvm\npm-global"`
+  - 设置环境变量：将 Path 中： `C:\\Users\\Administrator\\AppData\\Roaming\\npm` 修改为 `D:\\DevTools\\Nvm\\npm-global`
+- 查看已经安装的全局包：`npm ls -g --depth=0`
+- 手动设置 npm 源
+  - `npm config get registry`                                 ： 查看 npm 当前源
+  - `npm config set registry https://registry.npm.taobao.org/`：设置 npm 源为淘宝
+  - `npm install --registry=https://registry.npm.taobao.org`  ：使用特定源安装所有依赖的包
+  - `npm install express --registry=https://registry.npm.taobao.org`：使用特定源安装 express 包
+
+------
+
+## 四、参考链接
+
+- [Windows 下安装 nvm 管理 nodejs 版本](https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000007612011)
+- [npm源管理器nrm使用教程](https://link.juejin.cn?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000017419993)
+
+
+作者：暖生
+链接：https://juejin.cn/post/6844903799530733582
+来源：稀土掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
