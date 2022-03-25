@@ -1356,7 +1356,32 @@ $ npm install nrm -g
 - `nrm use company`     ：切换源，即可使用 `company` 对应名称的源
 - 更多命令在命令行输入 `nrm` 即可查看
 
+FAQ：工具 - nrm ls 不带星（*）并且 nrm current 没有任何输出
+
+执行以下命令，通过源码安装 `nrm`
+
+```
+$ npm install Pana/nrm -g 
+```
+
+验证：
+
+```
+$ nrm ls
+* npm ---------- https://registry.npmjs.org/
+  yarn --------- https://registry.yarnpkg.com/
+  tencent ------ https://mirrors.cloud.tencent.com/npm/
+  cnpm --------- https://r.cnpmjs.org/
+  taobao ------- https://registry.npmmirror.com/
+  npmMirror ---- https://skimdb.npmjs.com/registry/
+
+$ nrm current
+You are using npm registry.
+```
+
 ------
+
+
 
 ## 三、额外知识点
 
