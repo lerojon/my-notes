@@ -106,7 +106,7 @@
 
 ## git的使用--上传到GitHub仓库的方法
 
-### 一.仓库在GitHub上的，本地无仓库的(文件夹)
+### 一.需要将GitHub上的仓库clone到本地的，然后将项目直接放进这个文件夹的（GitHub仓库）
 
 1.安装git工具
 
@@ -146,7 +146,7 @@ https://github.com/
 
 3.git push -u origin master  （注：此操作目的是把本地仓库push到github上面，此步骤需要你输入帐号和密码，从2021.8.14号开始不支持密码验证了，改成token校验）
 
-### 二.本地已有项目仓库的(文件夹)，需要上传到GitHub仓库的
+### 二.本地已有项目仓库的(文件夹)，需要直接将项目上传到GitHub仓库的
 
 1. 需要先创建一个本地的版本库，假设文件夹起名为pros（其实也就是一个文件夹）直接右击新建文件夹，也可以右击打开Git bash命令行窗口通过命令来创建；
 
@@ -154,7 +154,7 @@ https://github.com/
 
 3. 将项目粘贴到这个本地Git仓库pros里面,然后通过git add把项目添加到仓库（或git add .把该目录下的所有文件添加到仓库，注意点是用空格隔开的）。在这个过程中你其实可以一直使用git status来查看你当前的状态;
 
-   注意如果是从其他仓库转到自己的仓库的：需要先这样
+   **注意**：如果是从其他仓库转到自己的仓库的：需要先这样
 
    ```
     git rm -r --cached .
@@ -259,13 +259,15 @@ git config --system --unset credential.helper
 ————————————————
 原文链接：https://blog.csdn.net/weixin_41010198/article/details/119698015
 
-
-
-### 2.git的命令
+##2.git的命令
 
 ## GIT基本操作
 
-下面是一些日常操作
+```crystal
+# 暂时将未提交的变化移除，稍后再移入(对于切换分支又不想提交代码极为有效)
+$ git stash
+$ git stash pop
+```
 
 ### 建立本地仓库
 
@@ -430,7 +432,7 @@ git config --global user.email "xxx"  -- 配置邮箱
 
   \3. 不过滤文件和文件夹： !*.c
 
-##git 的使用报错
+##3.git 的使用报错
 
 ###1.
 
@@ -564,6 +566,21 @@ git config --global http.sslVerify "false"
 . 代表当前目录
 ```
 
+### 6.使用git clone时报错
+
+```
+ssh:could not resolve hostname https:name or service not known fatal:could not read from remote repository
+```
+
+问题描述
+在clone某个github项目到本地时，报该错误，clone项目失败
+
+解决过程
+首先检查网络问题。使用ping命令ping github.com。结果显示找不到主机名
+进一步使用ping命令ping其他网址，如百度等，结果正常，说明网络正常，可能DNS解析出现问题
+修改DNS域名，结果仍然失败
+在本地host文件下，添加github的ip地址项(修改host文件可能需要更改权限)
+修改之后，git clone命令运行成功！
 
 
 #*vue使用import来引入组件的注意事项
@@ -1424,3 +1441,210 @@ You are using npm registry.
 链接：https://juejin.cn/post/6844903799530733582
 来源：稀土掘金
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处
+
+# *HUI框架的问题
+
+1.Ajax接口请求的方式 method: "post",区分大小写 ， 用大写的“POST” 
+
+请求数据的时候会报：Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'join') 的错误
+
+2.打包npm run build 的时候报：C:\Users\96135\AppData\Roaming\npm-cache\_logs\2022-04-08T01_20_46_605Z-debug.log  
+
+问题：可能是node的版本太高或太低了。
+
+3.单独引入提示弹窗
+
+import { hMessage } from "h_ui"
+
+ hMessage.info({
+
+​     content: "我将在10秒后消失",
+
+​     duration: 10,
+
+​    })
+
+4.hui框架没有像elementui那样的loading加载页面
+
+只能用elementui的loading加载页面
+
+```
+import { Loading } from "element-ui"
+
+// loading框设置局部刷新，且所有请求完成后关闭loading框
+
+let loading
+
+function startLoading() {
+
+ loading = Loading.service({
+
+  lock: true,
+
+  text: "加载中...",
+
+  //target: document.querySelector('.app-main')//设置加载动画区域
+
+ })
+
+}
+
+function endLoading() {
+
+ loading.close()
+
+}
+```
+
+5.hui框架 用svg矢量图无法显示
+
+# *编程语言的面向问题、面向对象、面向过程的问题
+
+###1.面向问题
+
+## 抽象的
+
+*面向问题的*语言这个术语，如果从字面上理解的话，太笼统了，在编程语言的分类中没有用处。就其最一般的含义而言，必须包括任何有助于解决问题的编程语言。因此，当解决科学或数字问题时，Fortran ( *qv* ) 是一种面向问题的语言。Cobol（Common Business-Oriented Language-- *qv*）是面向问题的，即使在它的标题中，也是针对业务问题的。然而，计算机科学文献中公认的用法为面向问题的语言强加了一个比可能包含 Fortran 和 Cobol 的语言更窄的上下文。从这个更受限制的角度来看，面向问题的同义词是面向*应用**程序*或*特殊用途*或*专用应用程序*或*特定领域*。
+
+
+
+### 2.面向过程
+
+## 抽象的
+
+*面向过程的语言*(POL) 是一种人工语言，用于以人类可以理解的形式定义计算机解决问题所需的操作。POL 的高级形式将程序员从用低级语言（如汇编语言和机器语言）表达算法的耗时且通常乏味的苦差事中解放出来（*请参阅*机器和汇编语言编程）。此外，在 POL 中，动作以独立于机器的形式表示，这极大地减轻了将程序从一台计算机移动到另一台计算机的负担（*请参阅*可移植性）。这增加了程序的生命周期和有用性。
+
+### 3.面向对象
+
+
+
+# *一个完整vue项目的开发过程
+
+##1.代码的格式化和lint代码检查问题
+
+### vscode插件
+
+首先vscode需要装一些vscode插件
+
+ESLint、Vetur、Prettier-Code formatter、GitLens-Git supercharged
+
+### 配置settings.json
+
+打开settings.json，贴上配置，注意自己原有的vscode主题和字体等不要替换掉
+
+打开方式
+
+#### 方式一:
+
+1)文件 ------.>【首选项】---------->【设置】
+
+2）搜索emmet.include;
+
+3）在settings.json下的【工作区设置】中添加
+
+#### 方式二:
+
+Ctrl + P 搜索settings.json
+
+### 贴上如下配置
+
+```
+{
+  "window.zoomLevel": 0,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "workbench.colorTheme": "One Monokai",
+  "editor.fontSize": 14,
+  "workbench.editor.enablePreview": true, //预览模式关闭
+  "editor.formatOnSave": true, // #每次保存的时候自动格式化
+  // 自动修复
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+  },
+  "eslint.enable": true, //是否开启vscode的eslint
+  // vscode默认启用了根据文件类型自动设置tabsize的选项
+  "editor.detectIndentation": false,
+  // 重新设定tabsize
+  "editor.tabSize": 2,
+  //  #去掉代码结尾的分号 
+  "prettier.semi": false,
+  //  #使用单引号替代双引号 
+  "prettier.singleQuote": true,  
+  //  #让prettier使用eslint的代码格式进行校验 
+  "prettier.eslintIntegration": true,
+  "javascript.preferences.quoteStyle": "double",
+  "typescript.preferences.quoteStyle": "double",
+  //  #让函数(名)和后面的括号之间加个空格
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  // 配置 ESLint 检查的文件类型
+  "eslint.validate": [
+    "javascript",
+    "vue",
+    "html"
+  ],
+  "eslint.options": { //指定vscode的eslint所处理的文件的后缀
+    "extensions": [
+      ".js",
+      ".vue",
+      ".ts",
+      ".tsx"
+    ]
+  }, 
+  "git.enableSmartCommit": true,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  //一定要在vutur.defaultFormatterOptions参数中设置，单独修改prettier扩展的设置是无法解决这个问题的，因为perttier默认忽略了vue文件（事实上从忽略列表移除vue也不能解决这个问题）
+  "vetur.format.defaultFormatterOptions": {
+    "prettier": {
+      "semi": false, // 格式化不加分号
+      "singleQuote": true, // 格式化以单引号为主
+    },
+    "js-beautify-html": {
+      // force-aligned | force-expand-multiline vue html代码格式化
+      "wrap_attributes": "force-aligned",//"auto","force-expand-multiline"
+      "wrap_line_length": 200,
+      "wrap_width_line": false,
+      "semi": false,
+      "singleQuote": true,
+    },
+    "prettyhtml": {
+      "printWidth": 100,
+      "singleQuote": false,
+      "wrapAttributes": false,
+      "sortAttributes": true
+    },
+  },
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "vetur.format.defaultFormatter.js": "prettier",
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+  "workbench.editor.showTabs": true,
+  "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true,
+        "suppressUpdateNotice": false,
+        "suppressWelcomeNotice": true
+    },
+    "gitlens.keymap": "alternate",
+    "git.enableSmartCommit": true,
+    "gitlens.historyExplorer.enabled": true,
+    "gitlens.views.fileHistory.enabled": true,
+    "gitlens.views.lineHistory.enabled": true,
+}
+```
+
+
+
+##2.屏幕的自适应
+
+2-1.侧边栏可以根据屏幕的尺寸进行收缩隐藏
+
