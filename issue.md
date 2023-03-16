@@ -2155,3 +2155,309 @@ treer -i "/^regex$/"//忽略目录或文件  treer -i "/node_modules/"
 let intersection = a.filter(v => b.includes(v))
 let difference = a.concat(b).filter(v => !a.includes(v) || !b.includes(v))
 ```
+
+####链判断运算符
+
+```javascript
+const firstName = message?.body?.user?.firstName || 'default';
+const fooValue = myForm.querySelector('input[name=foo]')?.value
+```
+
+上面代码使用了`?.`运算符，直接在链式调用的时候判断，左侧的对象是否为`null`或`undefined`。如果是的，就不再往下运算，而是返回`undefined`。
+
+下面是判断对象方法是否存在，如果存在就立即执行的例子。
+
+```javascript
+iterator.return?.()
+```
+
+上面代码中，`iterator.return`如果有定义，就会调用该方法，否则`iterator.return`直接返回`undefined`，不再执行`?.`后面的部分。
+
+对于那些可能没有实现的方法，这个运算符尤其有用。
+
+```javascript
+if (myForm.checkValidity?.() === false) {
+  // 表单校验失败
+  return;
+}
+```
+
+上面代码中，老式浏览器的表单对象可能没有`checkValidity()`这个方法，这时`?.`运算符就会返回`undefined`，判断语句就变成了`undefined === false`，所以就会跳过下面的代码。
+
+链判断运算符`?.`有三种写法。
+
+- `obj?.prop` // 对象属性是否存在
+
+- `obj?.[expr]` // 同上
+
+- `func?.(...args)` // 函数或对象方法是否存在
+
+  ------
+
+  以下写法是禁止的，会报错。
+
+  ```javascript
+  // 构造函数
+  new a?.()
+  new a?.b()
+  
+  // 链判断运算符的右侧有模板字符串
+  a?.`{b}`
+  a?.b`{c}`
+  
+  // 链判断运算符的左侧是 super
+  super?.()
+  super?.foo
+  
+  // 链运算符用于赋值运算符左侧
+  a?.b = c
+  ```
+
+  （4）右侧不得为十进制数值
+
+  为了保证兼容以前的代码，允许`foo?.3:0`被解析成`foo ? .3 : 0`，因此规定如果`?.`后面紧跟一个十进制数字，那么`?.`不再被看成是一个完整的运算符，而会按照三元运算符进行处理，也就是说，那个小数点会归属于后面的十进制数字，形成一个小数
+
+#### Null判断运算符
+
+读取对象属性的时候，如果某个属性的值是`null`或`undefined`，有时候需要为它们指定默认值。常见做法是通过`||`运算符指定默认值。
+
+```javascript
+const headerText = response.settings.headerText || 'Hello, world!';
+const animationDuration = response.settings.animationDuration || 300;
+const showSplashScreen = response.settings.showSplashScreen || true;
+```
+
+上面的三行代码都通过`||`运算符指定默认值，但是这样写是错的。<span style='color:red'>开发者的原意是，只要属性的值为`null`或`undefined`，默认值就会生效，但是属性的值如果为空字符串或`false`或`0`，默认值也会生效。</span>
+
+为了避免这种情况，[ES2020](https://github.com/tc39/proposal-nullish-coalescing) 引入了一个新的 Null 判断运算符`??`。它的行为类似`||`，但是只有运算符左侧的值为`null`或`undefined`时，才会返回右侧的值。
+
+```javascript
+const headerText = response.settings.headerText ?? 'Hello, world!';
+const animationDuration = response.settings.animationDuration ?? 300;
+const showSplashScreen = response.settings.showSplashScreen ?? true;
+```
+
+上面代码中，默认值只有在左侧属性值为`null`或`undefined`时，才会生效。
+
+这个运算符的一个目的，就是跟链判断运算符`?.`配合使用，为`null`或`undefined`的值设置默认值。
+
+```javascript
+const animationDuration = response.settings?.animationDuration ?? 300;
+```
+
+上面代码中，如果`response.settings`是`null`或`undefined`，或者`response.settings.animationDuration`是`null`或`undefined`，就会返回默认值300。也就是说，这一行代码包括了两级属性的判断。
+
+这个运算符很适合判断函数参数是否赋值。
+
+```javascript
+function Component(props) {
+  const enable = props.enabled ?? true;
+  // …
+}
+```
+
+上面代码判断`props`参数的`enabled`属性是否赋值，基本等同于下面的写法。
+
+```javascript
+function Component(props) {
+  const {
+    enabled: enable = true,
+  } = props;
+  // …
+}
+```
+
+`??`本质上是逻辑运算，它与其他两个逻辑运算符`&&`和`||`有一个优先级问题，它们之间的优先级到底孰高孰低。优先级的不同，往往会导致逻辑运算的结果不同。
+
+现在的规则是，如果多个逻辑运算符一起使用，必须用括号表明优先级，否则会报错。
+
+```javascript
+// 报错
+lhs && middle ?? rhs
+lhs ?? middle && rhs
+lhs || middle ?? rhs
+lhs ?? middle || rhs
+```
+
+上面四个表达式都会报错，必须加入表明优先级的括号。
+
+```javascript
+(lhs && middle) ?? rhs;
+lhs && (middle ?? rhs);
+
+(lhs ?? middle) && rhs;
+lhs ?? (middle && rhs);
+
+(lhs || middle) ?? rhs;
+lhs || (middle ?? rhs);
+
+(lhs ?? middle) || rhs;
+lhs ?? (middle || rhs);
+```
+
+#### 逻辑赋值运算符
+
+ES2021 引入了三个新的[逻辑赋值运算符](https://github.com/tc39/proposal-logical-assignment)（logical assignment operators），将逻辑运算符与赋值运算符进行结合。
+
+```javascript
+// 或赋值运算符
+x ||= y
+// 等同于
+x || (x = y)
+
+// 与赋值运算符
+x &&= y
+// 等同于
+x && (x = y)
+
+// Null 赋值运算符
+x ??= y
+// 等同于
+x ?? (x = y)
+```
+
+这三个运算符`||=`、`&&=`、`??=`相当于先进行逻辑运算，然后根据运算结果，再视情况进行赋值运算。
+
+它们的一个用途是，为变量或属性设置默认值。
+
+```javascript
+// 老的写法
+user.id = user.id || 1;
+
+// 新的写法
+user.id ||= 1;
+```
+
+上面示例中，`user.id`属性如果不存在，则设为`1`，新的写法比老的写法更紧凑一些。
+
+下面是另一个例子。
+
+```javascript
+function example(opts) {
+  opts.foo = opts.foo ?? 'bar';
+  opts.baz ?? (opts.baz = 'qux');
+}
+```
+
+上面示例中，参数对象`opts`如果不存在属性`foo`和属性`baz`，则为这两个属性设置默认值。有了“Null 赋值运算符”以后，就可以统一写成下面这样。
+
+```javascript
+function example(opts) {
+  opts.foo ??= 'bar';
+  opts.baz ??= 'qux';
+}
+```
+
+## Promise.try() 
+
+<span style='color:red'>实际开发中，经常遇到一种情况：不知道或者不想区分，函数`f`是同步函数还是异步操作，但是想用 Promise 来处理它。</span>因为这样就可以不管`f`是否包含异步操作，都用`then`方法指定下一步流程，用`catch`方法处理`f`抛出的错误。一般就会采用下面的写法。
+
+```javascript
+Promise.resolve().then(f)
+```
+
+上面的写法有一个缺点，就是如果`f`是同步函数，那么它会在本轮事件循环的末尾执行。
+
+```javascript
+const f = () => console.log('now');
+Promise.resolve().then(f);
+console.log('next');
+// next
+// now
+```
+
+上面代码中，函数`f`是同步的，但是用 Promise 包装了以后，就变成异步执行了。
+
+那么有没有一种方法，让同步函数同步执行，异步函数异步执行，并且让它们具有统一的 API 呢？回答是可以的，并且还有两种写法。第一种写法是用`async`函数来写。
+
+```javascript
+const f = () => console.log('now');
+(async () => f())();
+console.log('next');
+// now
+// next
+```
+
+上面代码中，第二行是一个立即执行的匿名函数，会立即执行里面的`async`函数，因此如果`f`是同步的，就会得到同步的结果；如果`f`是异步的，就可以用`then`指定下一步，就像下面的写法。
+
+```javascript
+(async () => f())()
+.then(...)
+```
+
+需要注意的是，`async () => f()`会吃掉`f()`抛出的错误。所以，如果想捕获错误，要使用`promise.catch`方法。
+
+```javascript
+(async () => f())()
+.then(...)
+.catch(...)
+```
+
+第二种写法是使用`new Promise()`。
+
+```javascript
+const f = () => console.log('now');
+(
+  () => new Promise(
+    resolve => resolve(f())
+  )
+)();
+console.log('next');
+// now
+// next
+```
+
+上面代码也是使用立即执行的匿名函数，执行`new Promise()`。这种情况下，同步函数也是同步执行的。
+
+鉴于这是一个很常见的需求，所以现在有一个[提案](https://github.com/ljharb/proposal-promise-try)，提供`Promise.try`方法替代上面的写法。
+
+```javascript
+const f = () => console.log('now');
+Promise.try(f);
+console.log('next');
+// now
+// next
+```
+
+事实上，`Promise.try`存在已久，Promise 库[`Bluebird`](http://bluebirdjs.com/docs/api/promise.try.html)、[`Q`](https://github.com/kriskowal/q/wiki/API-Reference#promisefcallargs)和[`when`](https://github.com/cujojs/when/blob/master/docs/api.md#whentry)，早就提供了这个方法。
+
+由于`Promise.try`为所有操作提供了统一的处理机制，所以如果想用`then`方法管理流程，最好都用`Promise.try`包装一下。这样有[许多好处](http://cryto.net/~joepie91/blog/2016/05/11/what-is-promise-try-and-why-does-it-matter/)，其中一点就是可以更好地管理异常。
+
+```javascript
+function getUsername(userId) {
+  return database.users.get({id: userId})
+  .then(function(user) {
+    return user.name;
+  });
+}
+```
+
+上面代码中，`database.users.get()`返回一个 Promise 对象，如果抛出异步错误，可以用`catch`方法捕获，就像下面这样写。
+
+```javascript
+database.users.get({id: userId})
+.then(...)
+.catch(...)
+```
+
+但是`database.users.get()`可能还会抛出同步错误（比如数据库连接错误，具体要看实现方法），这时你就不得不用`try...catch`去捕获。
+
+```javascript
+try {
+  database.users.get({id: userId})
+  .then(...)
+  .catch(...)
+} catch (e) {
+  // ...
+}
+```
+
+上面这样的写法就很笨拙了，这时就可以统一用`promise.catch()`捕获所有同步和异步的错误。
+
+```javascript
+Promise.try(() => database.users.get({id: userId}))
+  .then(...)
+  .catch(...)
+```
+
+事实上，`Promise.try`就是模拟`try`代码块，就像`promise.catch`模拟的是`catch`代码块。
