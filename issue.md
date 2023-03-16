@@ -307,6 +307,8 @@ git push origin master -- 把本地的 commit(提交) push 到远程服务器上
 
 ### git转态查看
 
+git remote update origin --prune 或者  git remote update origin --p    更新远程分支
+
 git status 查看状态
 
 git branch 查看本地所有分支
@@ -672,7 +674,9 @@ export { default as Sidebar } from './Sidebar'  相当于：export { default as 
 
 这样，Layout.vue就通过加载一个文件夹，获得了3个vue组件。
 
-#*npm报错
+#*npm相关
+
+##一：npm 的报错
 
 **如果使用了nvm，npm的时候报错很有可能是node的版本不对**
 
@@ -742,9 +746,145 @@ npm i npm -g 就ok了
 
 -----------------issue
 
-#*node-moudle 插件报错
 
-在babel.config.js删除相应报错插件即可
+
+### 2.安装webpack 打包依赖后   vue-cli项目运行npm run dev / npm run serve后报错：
+
+![](issue.assets/Snipaste_2022-04-15_14-25-54.jpg)
+
+####原因：
+某些新版本的库要求 webpack@5，更新依赖时，根据依赖选择的规则，就以 webpack@5 作为主依赖安装。然而 @vue/cli 依赖 webpack@4，它自带的 webpack 配置无法兼容 webpack@5 ，于是就报错，不能继续编译。如果你也在使用 @vue/cli，那么请不要贸然升级 webpack@5。
+
+####解决方案1：
+先删掉 node_modules 和 package-lock.json
+手动在 package.json 的 devDependencies 里添加 “webpack”: “^4.23.0”,
+重新安装全部依赖： npm install
+重新运行，发现问题解决
+参考文章：
+https://blog.meathill.com/fe-tool-chain/how-to-fix-error-rule-can-only-have-one-resource-source-provided-resource-and-test-include-exclude.html
+
+#### 解决方案2：
+
+卸载已安装的高版本webpack
+
+```
+npm uninstall webpack
+```
+
+再安装低版本的webpack
+
+```
+npm install webpack@^4.0.0 --save-dev
+```
+
+
+
+###3.Require stack: 需要堆栈
+
+报错信息：
+
+```
+ModuleBuildError: Module build failed (from ./node_modules/stylus-loader/index.js):
+Error: Cannot find module 'webpack'
+Require stack:
+- D:\aaa-DaGongRen\ivideo\ivideo-web-new\ivideo-web\node_modules\stylus-loader\index.js
+- C:\Users\11190\.hui\lib\node_modules\@hui\bundler\node_modules\webpack\node_modules\loader-runner\lib\loadLoader.js
+- C:\Users\11190\.hui\lib\node_modules\@hui\bundler\node_modules\webpack\node_modules\loader-runner\lib\LoaderRunner.js
+- C:\Users\11190\.hui\lib\node_modules\@hui\bundler\node_modules\webpack\lib\NormalModule.js
+- C:\Users\11190\.hui\lib\node_modules\@hui\bundler\node_modules\webpack\lib\NormalModuleFactory.js
+- C:\Users\11190\.hui\lib\node_modules\@hui\bundler\node_modules\webpack\lib\Compiler.js
+- C:\Users\11190\.hui\lib\node_modules\@hui\bundler\node_modules\webpack\lib\webpack.js
+- C:\Users\11190\.hui\lib\node_modules\@hui\bundler\node_modules\vue-loader\lib\plugin.js
+- C:\Users\11190\.hui\lib\node_modules\@hui\bundler\node_modules\vue-loader\lib\index.js
+- C:\Users\11190\.hui\lib\node_modules\@hui\bundler\lib\plugins\base.js
+- C:\Users\11190\.hui\lib\node_modules\@hui\bundler\lib\Service.js
+- C:\Users\11190\.hui\lib\node_modules\@hui\bundler\lib\index.js
+- D:\node\node-v14.1.0\node_modules\@hui\cli\node_modules\hui-shared\lib\service.js
+- D:\node\node-v14.1.0\node_modules\@hui\cli\node_modules\hui-shared\lib\plugin\PluginAPI.js
+- D:\node\node-v14.1.0\node_modules\@hui\cli\node_modules\hui-shared\lib\plugin\index.js
+- D:\node\node-v14.1.0\node_modules\@hui\cli\node_modules\hui-shared\lib\index.js
+- D:\node\node-v14.1.0\node_modules\@hui\cli\bin\hui.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:1020:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:890:27)
+    at Module.require (internal/modules/cjs/loader.js:1080:19)
+    at Module.require (C:\Users\11190\.hui\lib\node_modules\@hui\bundler\lib\hacker.js:21:21)
+    at require (internal/modules/cjs/helpers.js:72:18)
+    at Object.<anonymous> (D:\aaa-DaGongRen\ivideo\ivideo-web-new\ivideo-web\node_modules\stylus-loader\index.js:183:27)
+```
+
+原因可能是：下载node-sass失败
+
+1解决方法：
+
+```
+首先执行：npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+再执行：cnpm install node-sass --save
+```
+
+2解决方法：
+
+```
+npm install --save-dev node-sass --registry=https://registry.npm.taobao.org --disturl=https://npm.taobao.org/dist --sass-binary-site=http://npm.taobao.org/mirrors/node-sass
+
+```
+
+
+
+##二.npm 命令
+
+### 1.查看已全局安装的依赖包 
+
+分为 npm 和 yarn 不同安装
+
+```
+npm —>  npm list -g --depth 0 
+
+yarn —->  yarn global list --depth=0 
+```
+
+
+
+查看npm 全局安装的路径和依赖包
+
+```
+npm ls -g
+```
+
+
+
+#*node-moudle 依赖模块报错
+
+###1.在babel.config.js删除相应报错插件即可
+
+###2.**解决style lang="***scss***"的问题**
+
+Vue安装sass的命令：
+
+1、npm install node-sass --save-dev
+
+2、npm install sass-loader --save-dev
+
+在进行第一步的时候，我们会发现用报了下面这个的错，在百度一下问题的时候，发现原因是：
+
+首先要知道的是，安装 node-sass 时在 node scripts/install 阶段会从 github.com 上下载一个 .node 文件，大部分安装不成功的原因都源自这里，因为 GitHub Releases 里的文件都托管在 s3.amazonaws.com 上面，而这个网址在国内总是网络不稳定，所以我们需要通过第三方服务器下载这个文件。
+
+解决方法：
+1、首先安装淘宝镜像
+
+$ npm install -g cnpm --registry=https://registry.npm.taobao.org
+2、 用cnpm重新安装一次
+
+cnpm install node-sass --save-dev
+
+cnpm install sass-loader --save-dev
+
+
+可能报错"版本过高导致的"
+
+解决办法:
+
+npm uninstall sass-loader（卸载当前版本）卸了重新安装了一个低版本的就好了。npm install sass-loader@7.3.1 --save-dev
 
 #*vscode 编译报错的问题
 
@@ -1156,7 +1296,7 @@ html>
 </html>
 ```
 
-#*webpack打包问题
+#*webpack-App
 
 ###1.关于静态文件路径的问题
 
@@ -1189,6 +1329,283 @@ build: {
 注意：![](E:\issue_md\image\Snipaste_2022-03-17_10-52-33.jpg)
 
 这两个路径不正常的时候会在打包的时候报错，无法打包
+
+
+
+###2.webpack 创建过程 ，文件的创建， 安装依赖 、插件的顺序都记录下来 
+
+1.创建文件夹：
+
+├─src
+|  ├─generateJoke.js
+|  └index.js
+├─dist
+|  └index.html
+
+2. 如果没有webpack打包 使用：
+
+   ```
+   import ... from "..."
+   ```
+
+   引入文件会报错：
+
+   ```
+   Uncaught SyntaxError: Cannot use import statement outside a module (at index.js:1:1)
+   ```
+
+   所以按照webpack 打包依赖：
+
+   ```
+   先初始化：npm init -y
+   
+   npm i -D webpack webpack-cli
+   ```
+
+3.在package.json里的scripts对象里将test属性改成：
+
+```
+"build":"webpack --mode production"
+```
+
+然后运行：
+
+```
+npm run build
+
+终端输出：
+> webpack-App2@1.0.0 build E:\demo\webpack-App2
+> webpack --mode production
+
+asset main.js 45 bytes [emitted] [minimized] (name: main)
+orphan modules 80 bytes [orphan] 1 module
+./src/index.js + 1 modules 154 bytes [built] [code generated]
+webpack 5.72.0 compiled successfully in 239 ms
+
+```
+
+这时dist文件夹多了一个文件：main.js
+
+然后将index.html 的 脚本src路径 改成main.js 报错消失 成功运行输出
+
+4.在根目录下创建webpack的配置文件：webpack.config.js
+
+```
+const path = require('path')
+module.exports={
+    mode:'development', //package.json的脚本可以去掉 “--mode production”
+    entry:path.resolve(__dirname, 'src/index.js'), //配置入口文件
+    output:{ //出口配置
+    path:path.resolve(__dirname, 'dist') //出口文件（例如main.js）
+    filename:'bundle.js' //打包文件的指定文件名 运行npm run build 就会在dist生成bundle.js(没有设置filename的时候默认是main.js)
+    }，
+}
+```
+
+
+
+已上面的相比：entry变成了一个对象
+
+```
+const path = require('path')
+module.exports={
+    mode:'development', //package.json的脚本可以去掉 “--mode production”
+    entry:{
+     bundle:path.resolve(__dirname, 'src/index.js'), //配置入口文件
+    },
+    output:{ //出口配置
+    path:path.resolve(__dirname, 'dist') //出口文件（例如main.js）
+    filename:'[name].js' //打包文件的指定文件名 运行npm run build 就会在dist生成bundle.js(没有设置filename的时候默认是main.js)
+    }，
+}
+```
+
+5.配置插件
+
+```
+npm i -D sass style-loader css-loader sass-loader
+```
+
+6.在src下创建文件夹styles并创建main.scss
+
+```
+├─package-lock.json
+├─package.json
+├─webpack.config.js
+├─src
+|  ├─generateJoke.js
+|  ├─index.js
+|  ├─styles
+|  |   └main.scss
+├─dist
+|  ├─bundle.js
+|  └index.html
+```
+
+在src 的 index.js 引入main.scss
+
+```
+import './styles/main.scss'
+
+运行npm run build 会报错
+> webpack-App2@1.0.0 build E:\demo\webpack-App2
+> webpack
+
+asset bundle.js 5.66 KiB [emitted] (name: main)
+runtime modules 937 bytes 4 modules
+cacheable modules 1.47 KiB
+  ./src/index.js 101 bytes [built] [code generated]
+  ./src/generateJoke.js 80 bytes [built] [code generated]
+  ./src/styles/main.scss 1.29 KiB [built] [code generated] [1 error]
+
+ERROR in ./src/styles/main.scss 1:0
+Module parse failed: Unexpected character '@' (1:0)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+> @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+| $primary-color:#2fa8cc;
+| $secondary-color:#f4f4f4;
+ @ ./src/index.js 2:0-27
+
+webpack 5.72.0 compiled with 1 error in 95 ms
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! webpack-App2@1.0.0 build: `webpack`
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the webpack-App2@1.0.0 build script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\96135\AppData\Roaming\npm-cache\_logs\2022-04-22T16_42_17_395Z-debug.log
+```
+
+webpack.config.js添加module对象
+
+```
+module:{
+      rules:[
+          {
+              test:/\.scss$/,
+              use:['style-loader', 'css-loader', 'sass-loader']
+          }
+      ]
+  }
+  
+  //配置了规则之后 报错消失
+```
+
+7.下载插件：
+
+```
+npm i -D html-webpack-plugin
+```
+
+```
+const path = require("path")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+module.exports = {
+  mode: "development",
+  entry: path.resolve(__dirname, "src/index.js"),
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
+  },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+    ],
+  },
+  plugins: [ //配置了这个 再次运行npm run build 会自动生成dist文件夹 此时如果在index.html写内容 再次运行npm run build 是不生效的
+    new HtmlWebpackPlugin({
+      title: "Webpack App",
+      filename: "index.html",
+      template:'src/template.html',//在相应的文件下创建template.html文件夹 
+    }),
+  ],
+}
+
+```
+
+8.安装webpack的服务依赖 这样不用每次修改代码都要运行npm run build
+
+```
+在package.json 的脚本里添加 'dev':"webpack serve"
+"scripts": {
+        "build": "webpack",
+        "dev": "webpack serve"
+    },
+    
+    然后运行 npm run dev 会提示是否安装webpack-dev-serve
+    
+> webpack-App2@1.0.0 dev E:\demo\webpack-App2
+> webpack serve
+
+[webpack-cli] For using 'serve' command you need to install: 'webpack-dev-server' package.
+[webpack-cli] Would you like to install 'webpack-dev-server' package? (That will run 'npm install -D webpack-dev-server') (Y/n)
+ 
+ 
+ 安装之后会有一个端口： 8080
+ <i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://localhost:8080/
+<i> [webpack-dev-server] On Your Network (IPv4): http://192.168.3.158:8080/
+<i> [webpack-dev-server] On Your Network (IPv6): http://[fe80::c7b:e39:b38c:3eef]:8080/
+<i> [webpack-dev-server] Content not from webpack is served from 'E:\demo\webpack-App2\public' directory
+asset bundleb1ab35c03c69067796e1.js 264 KiB [emitted] [immutable] (name: bundle)
+asset index.html 533 bytes [emitted]
+
+直接在浏览器输入：localhost:8080 就能运行脚本
+```
+
+然后在webpack.config.js里添加：
+
+```
+devServer: {
+    static: {
+      directory: path.resolve(__dirname, "dist"),
+    },
+    port: 3000,
+    open: true,
+    hot: true,
+    compress: true,
+    historyApiFallback: true,
+  },
+```
+
+此时如果添加、修改代码运行npm run build 会生成新的打包文件 bundle.js
+
+在webpack.config.js里的output 添加一个属性 
+
+```
+clean:true  //再运行npm run build 就不会生成新的打包文件 bundle.js
+```
+
+在webpack.config.js里添加 devtool:'source-map'    运行npm run build会成map文件 可以进行断点查错
+
+9.安装转码依赖
+
+```
+npm i -D babel-loader @babel/core @babel/preset-env
+```
+
+然后在在webpack.config.js里的module对象里的rules数组添加规则：
+
+```
+{
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
+        },
+      },
+```
+
+10.配置图片等规则
 
 # *命名规则
 
@@ -1520,7 +1937,59 @@ function endLoading() {
 
 # *一个完整vue项目的开发过程
 
-##1.代码的格式化和lint代码检查问题
+## 1.目录结构
+
+1、build：构建脚本目录
+
+　　　　1）build.js  ==> 生产环境构建脚本；``
+
+　　　　2）check-versions.js  ==> 检查npm，node.js版本；
+
+　　　　3）utils.js  ==> 构建相关工具方法；
+
+　　　　4）vue-loader.conf.js  ==> 配置了css加载器以及编译css之后自动添加前缀；
+
+　　　　5）webpack.base.conf.js  ==> webpack基本配置；
+
+　　　　6）webpack.dev.conf.js  ==> webpack开发环境配置；
+
+　　　　7）webpack.prod.conf.js  ==> webpack生产环境配置；
+
+　　2、config：项目配置
+
+　　　　1）dev.env.js  ==> 开发环境变量；
+
+　　　　2）index.js  ==> 项目配置文件；
+
+　　　　3）prod.env.js  ==> 生产环境变量；
+
+　　3、node_modules：npm 加载的项目依赖模块
+
+　　4、src：这里是我们要开发的目录，基本上要做的事情都在这个目录里。里面包含了几个目录及文件：
+
+　　　　1）assets：资源目录，放置一些图片或者公共js、公共css。这里的资源会被webpack构建；
+
+　　　　2）components：组件目录，我们写的组件就放在这个目录里面；
+
+　　　　3）router：前端路由，我们需要配置的路由路径写在index.js里面；
+
+　　　　4）App.vue：根组件；
+
+　　　　5）main.js：入口js文件；
+
+　　5、static：静态资源目录，如图片、字体等。不会被webpack构建
+
+　　6、index.html：首页入口文件，可以添加一些 meta 信息等
+
+　　7、package.json：npm包配置文件，定义了项目的npm脚本，依赖包等信息``
+
+　　8、README.md：项目的说明文档，markdown 格式
+
+　　9、.xxxx文件：这些是一些配置文件，包括语法配置，git配置等
+
+
+
+##2.代码的格式化和lint代码检查问题
 
 ### vscode插件
 
@@ -1648,3 +2117,41 @@ Ctrl + P 搜索settings.json
 
 2-1.侧边栏可以根据屏幕的尺寸进行收缩隐藏
 
+# *使用treer工具，生成目录书结构
+
+treer是一个目录树生成工具
+
+npm链接：[https://www.npmjs.com/package/treer](https://links.jianshu.com/go?to=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Ftreer)
+安装：
+
+```
+npm install treer -g
+```
+
+查看版本：
+
+```
+treer --version
+```
+
+使用方法：
+
+```
+treer //查看目录树
+treer -d <指定路径>//查看指定路径的目录树
+treer -e <导出路径>//导出当前目录的目录树到特定路径下文件
+treer -i "/^regex$/"//忽略目录或文件  treer -i "/node_modules/" 
+```
+
+# 闭包
+
+闭包就是就是必须要调用函数才能保存过程值，就像let和const一样，工场函数就是这个道理，因为是以传入参数然后调用再返回一个函数的方式，第一次调用函数的时候就已经保存了这个过程值而不是最后的值。
+
+#*js
+
+####比较两个数组对象中相同的项
+
+```js
+let intersection = a.filter(v => b.includes(v))
+let difference = a.concat(b).filter(v => !a.includes(v) || !b.includes(v))
+```
