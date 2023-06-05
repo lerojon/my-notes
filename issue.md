@@ -200,7 +200,7 @@
 - 如果你发现很难坚持完自己设定的冥想时间，那么就从短一点的冥想开始。几乎所有人都可以坚持一到两分钟不被任何杂念打扰的冥想。随后，等你脑海的波澜平息下来之后，试着一点点扩展冥想的时间，直到你能完成整个冥想过程为止。
 - 长期冥想的好处十分明显，值得你坚持下去。这些好处包括：锻炼清醒意识、纾解压力、舒缓情绪、提高记忆力和注意力，增加大脑各部分的灰质（脑细胞）。
 
-# *关于将项目上传到GitHub等仓库的操作
+# *GIT的相关操作
 
 ##**很重要很重要**
 
@@ -758,9 +758,9 @@ git cherry-pick：选择commitId 应用在当前分支。git cherry-pick commitI
 
 推荐用这种方式回退远程的代码。比如我们在master分支提交错了文件需要回退，那么我们用这个方式回退后，再用git cherry-pick commitId 重放该提交。最后本地修改了再push到远程。
 
-# *git的提交规范
+##git的提交规范
 
-##提交格式：
+###提交格式：
 
 ```
 <type>(<scope>): <subject>
@@ -768,7 +768,7 @@ git cherry-pick：选择commitId 应用在当前分支。git cherry-pick commitI
 <body>
 ```
 
-##范例:
+###范例:
 
 ```
 feat(model): add model
@@ -776,7 +776,7 @@ feat(model): add model
 增加用户模型
 ```
 
-##提交的具体情况
+###提交的具体情况
 
 - `<type>` （必需）用于说明 commit 的类别，只允许使用下面8个标识。
 
@@ -800,6 +800,18 @@ feat(model): add model
   结尾不加句号（.）
 
 - `<body>` (可选) 部分是对本次 commit 的详细描述，可以分成多行。
+
+##Git设置多个远程仓库
+
+如果已经有了一个默认远程仓库，还需要增加另一个仓库：
+
+执行命令：
+
+git remote set-url --add origin [仓库地址]
+
+查看远程仓库地址：
+
+git remote -v
 
 
 
@@ -1370,6 +1382,22 @@ if (process.env.NODE_ENV === 'development') {
 ![](E:\issue_md\image\Snipaste_2021-12-29_15-17-56.jpg)
 
 ![](E:\issue_md\image\Snipaste_2021-12-29_15-18-19.jpg)
+
+
+
+##vscode 多行注释折叠 
+
+折叠代码前面加   #region   后面加  #endregion 
+
+//#region
+
+//
+
+//
+
+//#endregion
+
+
 
 # *element组件的问题
 
@@ -2689,3 +2717,6 @@ Promise.try(() => database.users.get({id: userId}))
 ```
 
 事实上，`Promise.try`就是模拟`try`代码块，就像`promise.catch`模拟的是`catch`代码块。
+
+# *优雅的编程技巧
+
