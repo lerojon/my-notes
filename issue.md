@@ -1,3 +1,77 @@
+#*生活
+
+###糖尿病和风湿患者应该遵循以下饮食建议：
+
+可以吃的东西：
+
+1. 高纤维食物：如全麦面包、燕麦、豆类、水果和蔬菜等，这些食物有助于降低血糖、降低胆固醇和维持肠道健康。
+
+2. 水果和蔬菜：因为它们富含维生素和矿物质，是健康的饮食中必不可少的一部分。
+
+3. 高蛋白质食物：如鱼、鸡肉、瘦肉、鸡蛋、豆类等，这些食物有助于稳定血糖水平、降低风湿痛和修复肌肉。
+
+不可以吃的东西：
+
+1. 高糖食品：如甜点、糖果和饮料等，这些食品会导致血糖升高。
+
+2. 饱和脂肪酸和反式脂肪酸：如薯条、炸鸡、肉类、油炸食品等，这些食品可能会加重炎症或造成内分泌失调。
+
+3. 盐：过多的盐会导致水潴留和加重关节疼痛。
+
+总的来说，糖尿病和风湿患者应该坚持低糖、低脂肪、低盐和高纤维饮食，并注意控制饮食量。此外，患者还应根据医生的建议进行特殊的饮食调整。
+
+
+
+###痛风和高尿酸患者应该选择低嘌呤食物，减少高嘌呤食物的摄入。以下是一些可食用和不可食用的食物：
+
+可食用的食物：水果、蔬菜、全谷物类食物、水产品、豆类、低脂肪乳制品和鸡蛋等。
+
+少量食用的食物：禽肉、瘦肉、杏仁、核桃和葡萄。
+
+不可食用的食物：高嘌呤食物包括肝、肾、红肉、肉汤、海鲜、鱼籽、菇类和豌豆等。
+
+此外，高尿酸患者也应该增加水的摄入，以增加尿酸的排泄，少饮酒，限制含糖饮料和甜食的摄入。建议患者咨询专业医生或营养师的建议并制定个人化的饮食计划。
+
+
+
+
+
+###健康的一日三餐搭配建议如下：
+
+早餐：
+1. 吃鸡蛋：可以吃煮鸡蛋、荷包蛋、煎蛋等，可以搭配全麦面包、蔬菜沙拉等。
+2. 吃燕麦片：可以用牛奶、酸奶、蜂蜜等配料搭配，也可以加入水果切片或果干。
+
+午餐：
+1. 吃鱼肉或禽肉：可以选择烤鱼、烤鸡等，可以搭配少量的土豆、胡萝卜、蔬菜沙拉等。
+2. 吃杂粮主食：可以选择糙米饭、玉米面饼等，可以搭配蔬菜汤或番茄鸡蛋汤等清淡汤品。
+
+晚餐：
+1. 吃豆腐：可以选择清炒豆腐、豆腐汤、麻婆豆腐等，可以搭配一定数量的杂粮主食、蔬菜或绿色水果。
+2. 吃粥类：可以选择小米粥、绿豆粥、玉米粥等，可以搭配少量的豆腐丝、菜丝、燕麦、馒头等。
+
+以上仅为建议，实际的饮食搭配还需根据个人健康状况以及身体需要来酌情调整。此外，建议饮食要多样化，合理搭配，适量摄入，注重营养均衡。
+
+
+
+###减重的关键是控制饮食和增加运动量。以下是一些可能有帮助的建议：
+
+1. 控制饮食：控制饮食是减重的主要因素之一。限制高热量和高脂肪食物的摄入，并增加蛋白质、蔬菜和水果的摄入。
+
+2. 增加运动量：增加运动量可以加快代谢和消耗更多的卡路里。可以选择有氧运动，如快走、慢跑、游泳等。每周至少150分钟的有氧运动。
+
+3. 控制饮食：减少糖、淀粉和高热量的食物摄入，如甜点、薯条、糖果等。
+
+4. 增加蛋白质摄入：增加蛋白质的摄入可以帮助增加饱腹感，减少摄入的卡路里。
+
+5. 减少碳酸饮料和果汁的摄入：这些饮料中含有大量的糖分和卡路里，会增加体重。
+
+6. 每天进行一些简单的体育活动：例如，爬楼梯、散步、打球等，可以帮助燃烧卡路里。
+
+重要的是要记住，健康和安全是减重的关键。不要过度饥饿或过度锻炼，这可能会伤害你的身体。如果您对如何减重有疑虑，请咨询专业人士或医生。
+
+
+
 # *高效学习
 
 1.思维导图做读书笔记
@@ -68,6 +142,49 @@
 
 
 
+###Peanuts:
+
+1. 深入学习 HTML、CSS、JavaScript
+2. 掌握 React 或 Vue 等主流框架，并深入学习相关生态工具如 Redux、Webpack、Babel 等
+3. 学习现代化的前端工程化和自动化构建工具，如 Gulp、Grunt、Webpack、Rollup 等
+4. 学习前端性能优化相关知识，如代码压缩、图片优化、懒加载等
+5. 熟练使用至少一种 CSS 预处理器如 Sass、Less 等
+6. 学习前端框架的底层原理，如 Virtual DOM、数据绑定、事件机制等
+7. 学习开发 SPA（单页应用）和 PWA（渐进式 Web App）
+8. 学习前端安全相关知识如 XSS、CSRF、CSP 等
+9. 学习函数式编程和 React Hooks 等新特性，提高代码质量和可读性
+10. 学习 Node.js、Express、MongoDB 和其他后端技术，能够开发全栈应用。
+
+###Peanuts:
+作为一名AI助手，我会向您介绍一条前端学习路线。前端开发是一门不断发展和进化的艺术。下面是一些建议的技能和工具，可以帮助您成为一名成功的前端开发人员。
+
+第一步：HTML、CSS和JavaScript基础
+
+- HTML（超文本标记语言）: ：用于创建网页结构和内容（例如段落、标题、图像等）。
+- CSS（层叠样式表）: 用于定义网页的样式和布局（例如颜色、字体、位置等）。
+- JavaScript: 用于实现网页的动态交互（例如，当用户点击一个按钮时，实现某些操作或验证表单）。
+
+第二步：学会使用一种JavaScript框架
+
+- Angular：由Google开发，已成为最受欢迎的前端框架之一，使开发更快、更简单，特别是在大型应用程序中。
+- React：由Facebook开发，是一个非常流行的框架，尤其适合构建单页面应用程序。
+- Vue：一个渐进式JavaScript框架，易于学习和使用，并且在构建用户界面方面非常灵活和高效。
+
+第三步：学习使用前端工具
+
+- Webpack: 用于配置并打包前端项目的模块，最终将它们转换为浏览器可以理解的JavaScript、CSS或HTML文件。
+- jQuery: 一个JavaScript库，它使DOM操作变得更易于使用，以及实现动态效果和Ajax请求。
+- Bootstrap: 一个流行的框架用于构建移动设备友好和响应式的网站，提供了一些CSS、HTML和JavaScript组件。
+
+第四步：学习构建web组件和应用程序
+
+- Web组件: 它们是一种可重用的自定义元素，提供了一种可维护和组装的方式，用于构建大规模的web应用程序。
+- Progressive Web App（PWA）：一个类型的Web应用程序，可以提供类似于本地应用程序的用户体验和功能，如离线访问和推送通知。
+
+综上所述，以上路线是基础和进阶路线的示例，让您迈出前端开发职业道路的第一步。
+
+
+
 # *冥想
 
 - 冥想时很容易就忘了时间，但过于关注时间只会分散你的注意力。有些人认为设定闹钟有助于解决这一问题，但记得要选择铃声轻柔一些的闹钟。如果闹钟声音太突兀，总是挂念闹钟什么时候响起的想法也会干扰你。
@@ -102,11 +219,9 @@
 > git reset --hard HEAD@{9}
 > 亲测有效！解决了～解决了～
 
+###git的使用--上传到GitHub仓库的方法
 
-
-## git的使用--上传到GitHub仓库的方法
-
-### 一.需要将GitHub上的仓库clone到本地的，然后将项目直接放进这个文件夹的（GitHub仓库）
+####一.需要将GitHub上的仓库clone到本地的，然后将项目直接放进这个文件夹的（GitHub仓库）
 
 1.安装git工具
 
@@ -146,7 +261,7 @@ https://github.com/
 
 3.git push -u origin master  （注：此操作目的是把本地仓库push到github上面，此步骤需要你输入帐号和密码，从2021.8.14号开始不支持密码验证了，改成token校验）
 
-### 二.本地已有项目仓库的(文件夹)，需要直接将项目上传到GitHub仓库的
+####二.本地已有项目仓库的(文件夹)，需要直接将项目上传到GitHub仓库的
 
 1. 需要先创建一个本地的版本库，假设文件夹起名为pros（其实也就是一个文件夹）直接右击新建文件夹，也可以右击打开Git bash命令行窗口通过命令来创建；
 
@@ -208,11 +323,7 @@ https://github.com/
 由于新建的远程仓库是空的，所以要加上-u这个参数，等远程仓库里面有了内容之后，下次再从本地库上传内容的时候只需下面这样就可以了：
 $ git push origin master
 
-
-
-
-
-## 关于git的权限校验的问题
+###关于git的权限校验的问题
 
 一、 如何生成自己的token
 1、在个人设置页面，找到Setting（参考）
@@ -259,17 +370,32 @@ git config --system --unset credential.helper
 ————————————————
 原文链接：https://blog.csdn.net/weixin_41010198/article/details/119698015
 
-##2.git的命令
+##git的命令
 
-## GIT基本操作
+###GIT基本操作
 
 ```crystal
 # 暂时将未提交的变化移除，稍后再移入(对于切换分支又不想提交代码极为有效)
-$ git stash
-$ git stash pop
+拉取代码时，本地有修改文件的拉取不成功时可以用下面这两条：
+git stash   先隐藏本地修改
+git stash pop    恢复本地修改
+
+git init
+git remote add origin [远程库地址]
+git pull origin master
+git add .
+git commit -m "注释"
+git push origin master
+
+其他：
+git status
+git log
+git branch
+git checkout
+git merge
 ```
 
-### 建立本地仓库
+##建立本地仓库
 
 git init 创建本地仓库： git init [project-name]
 
@@ -279,7 +405,7 @@ git remote add origin git@github.com:UserName/yourProjectName.git  把本地仓�
 
 git clone https://github.com/zhoulujun/yourProjectName.git
 
-### **提交本地修改到远程仓库中：**
+##提交本地修改到远程仓库中：
 
 git add -- 将改动添加到本地仓库中  
 
@@ -305,7 +431,7 @@ git push origin master -- 把本地的 commit(提交) push 到远程服务器上
 - git push remoteBranchName tagName提交指定tag
 - git push remoteBranchName --tags 提交所有tag
 
-### git转态查看
+##git转态查看
 
 git remote update origin --prune 或者  git remote update origin --p    更新远程分支
 
@@ -322,7 +448,7 @@ git show tagName 查看tag信息
 
 git log --stat 显示commit历史，以及每次commit发生变更的文件
 
-### 分支操作
+##分支操作
 
 git checkout branchName 切换到指定分支，并更新工作区
 
@@ -352,9 +478,9 @@ git branch -m oldbranchname newbranchname 重命名分支 使用-M则表示强�
 - git push origin :old_branch # Delete the old branch
 - git push --set-upstream origin new_branch 或者git push -u origin new_branch # Push the new branch, set local branch to track the new remote
 
-## git分支与主干合并操作
+###git分支与主干合并操作
 
-### 在主干上合并分支||主干合并分支
+####在主干上合并分支||主干合并分支
 
 git merge branch --squash //提交合并后的代码
 
@@ -362,7 +488,7 @@ git commit -m ‘合并备注’
 
 git push //将代码推送到远程仓库
 
-### 分支同步主干代码||在分支上合并主干
+####分支同步主干代码||在分支上合并主干
 
 git merge master --squash //提交合并后的代码
 
@@ -370,7 +496,7 @@ git commit -m ‘合并备注’ //将代码推送到远程仓库
 
 git push //将代码推送到远程仓库
 
-## git强制覆盖本地代码
+####git强制覆盖本地代码
 
 与git远程仓库保持一致
 
@@ -384,7 +510,7 @@ git强制覆盖本地命令（单条执行）：
 
 git fetch --all && git reset --hard origin/master && git pull
 
-## git修改远程仓库地址
+####git修改远程仓库地址
 
 方法有三种：
 
@@ -402,7 +528,7 @@ git remote add origin [url]
 
 .git文件夹，找到config，编辑，把就的项目地址替换成新的。
 
-## git 配置
+##git 配置
 
 git config --list     查看配置列表
 
@@ -434,9 +560,9 @@ git config --global user.email "xxx"  -- 配置邮箱
 
   \3. 不过滤文件和文件夹： !*.c
 
-##3.git 的使用报错
+##git 的使用报错
 
-###1.
+####1.
 
 ```
 > git pull --tags origin master
@@ -451,7 +577,7 @@ fatal: refusing to merge unrelated histories
 
 解决：git pull --rebase origin master
 
-###2.
+####2.
 
 > ```
 > git push origin master:master
@@ -465,7 +591,7 @@ fatal: refusing to merge unrelated histories
 >
 > 没有权限上传到相应分支
 
-###3.如果一个分支没有master上的内容 可以选择将master分支合并到该分支上
+####3.如果一个分支没有master上的内容 可以选择将master分支合并到该分支上
 
 没有在当前分支：用 命令：git branch 查看分支
 
@@ -531,9 +657,7 @@ git branch
 
 git branch -d temp
 
-
-
-###4.提交代码到远程仓库时的报错： fatal: unable to access 'https://github.com/lerojon/FrontendTools.git/': OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054 
+####4.提交代码到远程仓库时的报错： fatal: unable to access 'https://github.com/lerojon/FrontendTools.git/': OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054 
 
 第一种方法：
 
@@ -555,7 +679,7 @@ git config --global http.sslVerify "false"
 
 - git_bash 执行 `git config --global --unset http.proxy` 命令或`git config --global --unset https.proxy`
 
-### 5.改变项目的仓库地址(The file will have its original line endings in your working directory)
+####5.改变项目的仓库地址(The file will have its original line endings in your working directory)
 
 ```
 此时需要执行如下代码：
@@ -568,7 +692,7 @@ git config --global http.sslVerify "false"
 . 代表当前目录
 ```
 
-### 6.使用git clone时报错
+####6.使用git clone时报错
 
 ```
 ssh:could not resolve hostname https:name or service not known fatal:could not read from remote repository
@@ -583,6 +707,102 @@ ssh:could not resolve hostname https:name or service not known fatal:could not r
 修改DNS域名，结果仍然失败
 在本地host文件下，添加github的ip地址项(修改host文件可能需要更改权限)
 修改之后，git clone命令运行成功！
+
+## git项目分支回滚
+
+本文 git 相关命令：
+
+git reset：回退版本，可指定某一次提交的版本。git reset [--soft | --mixed | --hard] commitId。
+
+git revert：撤销某个提交，做反向操作，生成新的commitId，原有提交记录保留。git revert commitId。
+
+git status：查看文件在工作区和暂存区的状态。
+
+git log：查看代码提交记录。
+
+git cherry-pick：选择commitId 应用在当前分支。git cherry-pick commitId。
+
+###回退分两种情况：
+
+已 commit，未push到远程仓库。
+
+已 commit，并且push到了远程仓库。
+
+####已 commit，未push到远程仓库
+
+ 一.git reset --soft（撤销commit）
+
+执行命令： git reset --soft [通过git log 获取的id(版本号)]	
+
+二.git reset --mixed（撤销 commit 和 add 两个动作）
+
+#### 已 commit，并且push到了远程仓库
+
+一：git reset --hard（撤销并舍弃版本号之后的提交记录）
+
+执行命令：
+
+1.git reset --hard [要回退的版本号]
+
+2.git push -f     （强制推送到远程，之前提交都会被覆盖，慎用）
+
+二：git revert（撤销，但是保留了提交记录）
+
+执行命令：
+
+1.git revert [版本号]
+
+2.git cherry-pick [版本号（跟revert时的版本号一样）]
+
+4.git push
+
+推荐用这种方式回退远程的代码。比如我们在master分支提交错了文件需要回退，那么我们用这个方式回退后，再用git cherry-pick commitId 重放该提交。最后本地修改了再push到远程。
+
+# *git的提交规范
+
+##提交格式：
+
+```
+<type>(<scope>): <subject>
+// 空一行
+<body>
+```
+
+##范例:
+
+```
+feat(model): add model
+
+增加用户模型
+```
+
+##提交的具体情况
+
+- `<type>` （必需）用于说明 commit 的类别，只允许使用下面8个标识。
+
+  ```
+  br: 此项特别针对bug号，用于向测试反馈bug列表的bug修改情况
+  feat：新功能（feature）
+  fix：修补bug
+  docs：文档（documentation）
+  style： 格式（不影响代码运行的变动）
+  refactor：重构（即不是新增功能，也不是修改bug的代码变动）
+  test：增加测试
+  chore：构建过程或辅助工具的变动
+  revert: feat(pencil): add 'graphiteWidth' option (撤销之前的commit)
+  ```
+
+- `<scope>` （可选）说明 commit 影响的范围，比如数据层、控制层、视图层等等，视项目不同而不同。
+
+- `<subject>` （必需）commit 目的的简短描述，不超过50个字符。
+  以动词开头，使用第一人称现在时，比如change，而不是changed或changes
+  第一个字母小写
+  结尾不加句号（.）
+
+- `<body>` (可选) 部分是对本次 commit 的详细描述，可以分成多行。
+
+
+
 
 
 #*vue使用import来引入组件的注意事项
@@ -829,8 +1049,6 @@ npm install --save-dev node-sass --registry=https://registry.npm.taobao.org --di
 
 ```
 
-
-
 ##二.npm 命令
 
 ### 1.查看已全局安装的依赖包 
@@ -1067,7 +1285,7 @@ function salaryChange(e){
 
 # *uniapp项目出现的问题
 
-## 1，编译问题
+##1，编译问题
 
 ![](E:\issue_md\image\Snipaste_2021-12-14_15-39-41.jpg)
 
@@ -1607,7 +1825,7 @@ npm i -D babel-loader @babel/core @babel/preset-env
 
 10.配置图片等规则
 
-# *命名规则
+# *命名规则（规范）
 
 ```
 项目命名
@@ -1917,21 +2135,19 @@ function endLoading() {
 
 # *编程语言的面向问题、面向对象、面向过程的问题
 
-###1.面向问题
+##1.面向问题
 
-## 抽象的
+###抽象的
 
 *面向问题的*语言这个术语，如果从字面上理解的话，太笼统了，在编程语言的分类中没有用处。就其最一般的含义而言，必须包括任何有助于解决问题的编程语言。因此，当解决科学或数字问题时，Fortran ( *qv* ) 是一种面向问题的语言。Cobol（Common Business-Oriented Language-- *qv*）是面向问题的，即使在它的标题中，也是针对业务问题的。然而，计算机科学文献中公认的用法为面向问题的语言强加了一个比可能包含 Fortran 和 Cobol 的语言更窄的上下文。从这个更受限制的角度来看，面向问题的同义词是面向*应用**程序*或*特殊用途*或*专用应用程序*或*特定领域*。
 
+##2.面向过程
 
-
-### 2.面向过程
-
-## 抽象的
+###抽象的
 
 *面向过程的语言*(POL) 是一种人工语言，用于以人类可以理解的形式定义计算机解决问题所需的操作。POL 的高级形式将程序员从用低级语言（如汇编语言和机器语言）表达算法的耗时且通常乏味的苦差事中解放出来（*请参阅*机器和汇编语言编程）。此外，在 POL 中，动作以独立于机器的形式表示，这极大地减轻了将程序从一台计算机移动到另一台计算机的负担（*请参阅*可移植性）。这增加了程序的生命周期和有用性。
 
-### 3.面向对象
+##3.面向对象
 
 
 
@@ -2143,11 +2359,23 @@ treer -e <导出路径>//导出当前目录的目录树到特定路径下文件
 treer -i "/^regex$/"//忽略目录或文件  treer -i "/node_modules/" 
 ```
 
-# 闭包
+# *闭包
 
 闭包就是就是必须要调用函数才能保存过程值，就像let和const一样，工场函数就是这个道理，因为是以传入参数然后调用再返回一个函数的方式，第一次调用函数的时候就已经保存了这个过程值而不是最后的值。
 
-#*js
+
+
+#####javascript的闭包怎么理解？一般怎么用？哪些场景会用到？
+
+JavaScript的闭包是指在一个函数内部定义的函数，这个函数可以访问外部函数的变量、参数和函数。在JavaScript中，函数和变量具有作用域，变量在函数外部是不可访问的，但是函数内部可以定义函数，这个函数可以访问外部函数的变量，这种函数就是闭包。
+
+闭包的一般用法是用来创建私有变量和方法。通过在函数内部定义变量，然后在函数内部再定义一个函数，这个函数可以访问函数内部的变量，然后将这个函数返回，这样就可以通过返回的函数来访问函数内部的变量，形成一个闭合的作用域。这种方式可以将变量和方法封装在一个作用域内，避免了变量名和方法名的冲突。这种方式可以实现模块化编程，并且可以防止外部代码的误操作。
+
+闭包可以用在很多场景中，例如在事件处理函数中，可以将变量保存在闭包中，这样在事件处理函数执行时，就可以访问到这些变量。在回调函数中，闭包可以将一些参数保存下来，以便在回调函数执行时使用。在面向对象编程中，闭包可以模拟私有变量和方法，实现类的封装。在异步编程中，闭包可以保存一些状态，以便在异步操作完成后使用。总之，闭包是JavaScript中非常重要和常用的特性。
+
+
+
+# *js
 
 ####比较两个数组对象中相同的项
 
