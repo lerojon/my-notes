@@ -1397,6 +1397,245 @@ if (process.env.NODE_ENV === 'development') {
 
 //#endregion
 
+## settings.json文件
+
+```
+/* {
+  "window.zoomLevel": 0,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "workbench.colorTheme": "One Monokai",
+  "editor.fontSize": 14,
+  "workbench.editor.enablePreview": true, //预览模式关闭
+  "editor.formatOnSave": true, // #每次保存的时候自动格式化
+  // 自动修复
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.enable": true, //是否开启vscode的eslint
+  // vscode默认启用了根据文件类型自动设置tabsize的选项
+  "editor.detectIndentation": false,
+  // 重新设定tabsize
+  "editor.tabSize": 2,
+  //  #去掉代码结尾的分号
+  "prettier.semi": false,
+  //  #使用单引号替代双引号
+  "prettier.singleQuote": true,
+  //  #让prettier使用eslint的代码格式进行校验
+  "prettier.eslintIntegration": true,
+  "javascript.preferences.quoteStyle": "double",
+  "typescript.preferences.quoteStyle": "double",
+  //  #让函数(名)和后面的括号之间加个空格
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  // 配置 ESLint 检查的文件类型
+  "eslint.validate": ["javascript", "vue", "html"],
+  "eslint.options": {
+    //指定vscode的eslint所处理的文件的后缀
+    "extensions": [".js", ".vue", ".ts", ".tsx"]
+  },
+  "git.enableSmartCommit": true,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  //一定要在vutur.defaultFormatterOptions参数中设置，单独修改prettier扩展的设置是无法解决这个问题的，因为perttier默认忽略了vue文件（事实上从忽略列表移除vue也不能解决这个问题）
+  "vetur.format.defaultFormatterOptions": {
+    "prettier": {
+      "semi": false, // 格式化不加分号
+      "singleQuote": true // 格式化以单引号为主
+    },
+    "js-beautify-html": {
+      // force-aligned | force-expand-multiline vue html代码格式化
+      "wrap_attributes": "force-aligned", //"auto","force-expand-multiline"
+      "wrap_line_length": 200,
+      "wrap_width_line": false,
+      "semi": false,
+      "singleQuote": true
+    },
+    "prettyhtml": {
+      "printWidth": 100,
+      "singleQuote": false,
+      "wrapAttributes": false,
+      "sortAttributes": true
+    }
+  },
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "vetur.format.defaultFormatter.js": "prettier",
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+  "workbench.editor.showTabs": true,
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": false,
+    "suppressCommitNotFoundWarning": false,
+    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressGitVersionWarning": false,
+    "suppressLineUncommittedWarning": false,
+    "suppressNoRepositoryWarning": false,
+    "suppressResultsExplorerNotice": false,
+    "suppressShowKeyBindingsNotice": true,
+    "suppressUpdateNotice": false,
+    "suppressWelcomeNotice": true
+  },
+  "gitlens.keymap": "alternate",
+  "git.enableSmartCommit": true,
+  "gitlens.historyExplorer.enabled": true,
+  "gitlens.views.fileHistory.enabled": true,
+  "gitlens.views.lineHistory.enabled": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+} */
+
+{
+  //显示空格和tab缩进
+  "editor.renderControlCharacters": true,
+  "editor.renderWhitespace": "all",
+
+  // 每次保存的时候将代码按eslint格式进行修复
+  // "eslint.autoFixOnSave": true,
+  // 此配置已作废，使用editor.codeActionsOnSave，里面配置source.fixAll.eslint 属性把"eslint.autoFixOnSave": true 改成：
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "git.autofetch": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "editor.fontSize": 20,
+  //   "cssrem.rootFontSize": 32,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "files.autoSave": "off",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "vue-html",
+    {
+      "language": "vue",
+      "autoFix": true
+    },
+    "html",
+    "vue"
+  ],
+  //--------
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.eslint-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // 默认使用prettier格式化支持的文件
+  "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.format.defaultFormatter.html": "prettyhtml",
+  "vetur.format.defaultFormatterOptions": {
+    "prettier": {
+      // 结尾无分号
+      "semi": false,
+      // 超过140个字符换行
+      "printWidth": 140,
+      // 使用单引号
+      "singleQuote": false,
+      // 无尾随逗号
+      "trailingComma": "none",
+      // 箭头函数单个参数不加分号
+      "arrowParens": "avoid",
+      "eslintIntegration": true
+    },
+    "prettyhtml": {
+      "printWidth": 140
+    }
+  },
+  //---------
+  //   "eslint.autoFixOnSave": true,
+  // 需要 npm install -g eslint-plugin-vue
+  "eslint.options": {
+    "extensions": [".js", ".vue"]
+  },
+  "explorer.confirmDragAndDrop": false,
+  "workbench.sideBar.location": "left",
+  "files.associations": {
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript",
+    "*.vue": "vue",
+    "*.wpy": "vue"
+  },
+  "emmet.includeLanguages": {
+    "wxml": "html"
+  },
+  "minapp-vscode.disableAutoConfig": true,
+  // "editor.renderWhitespace": "all",
+
+  //----less编译的时候自动加“.wxss”后缀名
+  "less.compile": {
+    "outExt": ".wxss"
+  },
+  "git.enableSmartCommit": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "workbench.iconTheme": "vscode-icons",
+  "vetur.grammar.customBlocks": {
+    "docs": "md",
+    "i18n": "json"
+  },
+  "editor.suggest.showReferences": false,
+  "editor.suggest.showSnippets": false,
+  //   "[vue]": {
+  //   "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  // },
+  "[json]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "eslint.rules.customizations": [],
+  // 每次保存的时候自动格式化（建议关掉，用eslint来修复）
+  "editor.formatOnSave": true,
+  "liveServer.settings.CustomBrowser": "chrome",
+  "eslint.codeAction.showDocumentation": {
+    "enable": false
+  },
+  "js/ts.implicitProjectConfig.experimentalDecorators": true,
+  "editor.hover.enabled": false,
+  //    "[css]": {
+  //   "editor.defaultFormatter": "HookyQR.beautify"
+  // },
+  "prettier.semi": false,
+  "open-in-browser.default": "Chrome",
+  "zenMode.hideTabs": false,
+  "editor.detectIndentation": false,
+  "prettier.useEditorConfig": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "eslint.codeActionsOnSave.rules": null,
+  "eslint.format.enable": true,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "eslint.nodeEnv": "",
+  "editor.tabSize": 2,
+  "powermode.enabled": true,
+  "powermode.shake.intensity": 0,
+  "powermode.combo.timeout": 0,
+  "powermode.combo.counterSize": 0,
+  "git.openRepositoryInParentFolders": "always",
+  "window.zoomLevel": -1
+}
+
+```
+
+
+
 
 
 # *element组件的问题
@@ -2719,4 +2958,24 @@ Promise.try(() => database.users.get({id: userId}))
 事实上，`Promise.try`就是模拟`try`代码块，就像`promise.catch`模拟的是`catch`代码块。
 
 # *优雅的编程技巧
+
+
+
+#*项目架构（VUE）
+
+# *vue
+
+##单页面应用（spa）
+
+概念：只有一个html页面，所有跳转方式都是通过组件切换完成的。
+优点：页面之间跳转流畅、组件化开发、组件可复用、开发便捷、易维护。
+缺点：首屏加载较慢，加载整个项目中使用的css、js，SEO优化不好。
+
+##多页面应用（mpa）
+
+概念：整个项目有多个html，所有跳转方式都是页面之间相互跳转的。
+优点：首屏加载较快，只加载本页所使用的的css、js，SEO优化较好。
+缺点：页面跳转较慢。
+vue 如何实现多页面应用 https://www.jianshu.com/p/eceb2ac9df90
+vue中如何配置多页面配置 https://www.jianshu.com/p/52c4913e0bf4
 
