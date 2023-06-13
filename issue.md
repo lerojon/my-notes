@@ -448,7 +448,77 @@ git show tagName 查看tag信息
 
 git log --stat 显示commit历史，以及每次commit发生变更的文件
 
-##分支操作
+##git分支操作
+
+###git更新分支
+
+####在 Git 中更新本地分支
+
+在使用 Git 工作时，我们经常希望从远程分支更新我们的本地分支，这使我们与队友的工作保持更新。
+
+####在 Git 中查看 Git 分支
+
+要查看所有 Git 分支，包括本地和远程分支以及本地或远程存储库，我们将执行以下命令：
+
+```bash
+$ git branch -a
+```
+
+如果有人删除服务器上的远程分支，它不会影响远程分支，因为本地 Git 存储库不会通过上述命令更新。 我们可以通过下面提到的命令更新远程 Git 分支的本地列表。
+
+```bash
+$ git remote update origin --prune
+```
+
+我们还可以通过每次使用 `git fetch` 和 `git pull` 命令使用标志 **–prune** 来更新远程分支的本地列表。
+
+```bash
+$ git fetch --prune
+```
+
+通过 `git fetch` 更新新的提交，这些提交是由远程存储库中的其他队友添加的。 `git fetch` 不会更新我们的本地分支。
+
+```bash
+$ git pull --prune
+```
+
+此命令执行提取并将这些提取的提交组合到本地分支中。 从远程存储库下载新提交后，它会立即更新本地分支。
+
+服务器上远程分支的所有本地列表都可以自动更新，而无需通过下面提到的 Git 命令进行任何长时间的工作：
+
+```bash
+$ git config remote.origin.prune true
+```
+
+###git 如何创建分支并且同步到远程
+
+####创建分支
+命令 git branch 可以用来列出本地所有的分支。使用以下命令创建一个新的分支，并切换到该分支：
+
+git checkout -b new_branch_name
+1.这个命令相当于执行了两个 Git 命令：
+
+git branch new_branch_name       # 创建一个名为 new_branch_name 的分支
+git checkout new_branch_name     # 切换到 new_branch_name 分支
+现在你就可以在新的分支上开发，并提交更改。
+
+####推送分支到远程
+一旦分支已经被创建并有一些提交，可以将该分支推送到远程存储库中。使用以下命令进行推送：
+
+git push -u origin new_branch_name
+其中 -u 参数告诉 Git 在远程存储库中设置上游（默认）分支。第一次推送分支时，它会自动创建同名分支。之后，在推送更改时，只需要运行：
+
+git push
+####合并分支
+当你已经完成了对新分支的修改，并且想要将它合并到本地主分支上，可以使用以下命令：
+
+git checkout main              # 切换回主分支
+git merge new_branch_name      # 将新分支合并到主分支
+如果合并遇到冲突，请按照提示手动解决冲突。完成合并后，可以使用 git push 命令将更改推送到远程主分支。
+
+####注意：在进行任何 Git 操作前，一定要先切换到正确的分支，并确保您理解正在执行的命令的含义。
+
+####git分支切换部分相关命令
 
 git checkout branchName 切换到指定分支，并更新工作区
 
@@ -496,7 +566,7 @@ git commit -m ‘合并备注’ //将代码推送到远程仓库
 
 git push //将代码推送到远程仓库
 
-####git强制覆盖本地代码
+##git强制覆盖本地代码
 
 与git远程仓库保持一致
 
@@ -510,7 +580,7 @@ git强制覆盖本地命令（单条执行）：
 
 git fetch --all && git reset --hard origin/master && git pull
 
-####git修改远程仓库地址
+##git修改远程仓库地址
 
 方法有三种：
 
