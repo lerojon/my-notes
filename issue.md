@@ -3076,6 +3076,63 @@ function throttle(func, wait) {
 
 通过使用防抖和节流技术，我们可以有效地控制频繁触发的函数执行次数，提高JavaScript程序的性能和用户体验。但需要根据实际需求选择合适的防抖或节流方式，避免过度优化导致功能失效。
 
+##JavaScript的本地存储（如`localStorage`）超出限制时，浏览器通常抛出一个异常的解决方法
+
+当JavaScript的本地存储（如`localStorage`）超出限制时，浏览器通常会抛出一个异常。为了避免这种情况，你可以在尝试存储数据之前检查当前已使用的存储空间，并相应地处理超出限制的情况。
+
+以下是一个JavaScript代码示例，它展示了如何检查`localStorage`的剩余空间，并在尝试存储新数据之前进行适当的处理：
+
+```js
+function safeSetItem(key, value) {  
+    try {  
+        // 尝试存储数据  
+        localStorage.setItem(key, value);  
+    } catch (e) {  
+        if (e instanceof DOMException && e.code === DOMException.QUOTA_EXCEEDED_ERR) {  
+            // 处理存储空间超出限制的情况  
+            console.error('LocalStorage is full. Could not store data for key:', key);  
+              
+            // 你可以在这里添加清理旧数据的逻辑，或者通知用户  
+            // 例如，删除最旧的一些项  
+            // for (let i = 0; i < localStorage.length; i++) {  
+            //     const keyToDelete = localStorage.key(i);  
+            //     localStorage.removeItem(keyToDelete);  
+            //     // 停止删除，一旦有足够的空间  
+            //     if (isLocalStorageAvailable()) break;  
+            // }  
+              
+            // 或者，你可以使用IndexedDB或服务器存储作为备选方案  
+            // ...  
+        } else {  
+            // 处理其他错误情况  
+            throw e;  
+        }  
+    }  
+}  
+  
+function isLocalStorageAvailable() {  
+    try {  
+        // 尝试存储一个测试项  
+        localStorage.setItem('__test__', '__test__');  
+        localStorage.removeItem('__test__');  
+        return true;  
+    } catch (e) {  
+        return false;  
+    }  
+}  
+  
+// 使用safeSetItem来安全地存储数据  
+safeSetItem('myKey', 'myValue');
+```
+
+在这个示例中，`safeSetItem`函数尝试使用`localStorage.setItem`来存储数据。如果抛出`DOMException`并且错误代码是`QUOTA_EXCEEDED_ERR`，那么就说明存储空间已满。此时，你可以决定删除一些旧数据以释放空间，或者采取其他措施，比如通知用户或使用其他存储机制。
+
+`isLocalStorageAvailable`函数用于检查`localStorage`是否可用。它通过尝试存储和删除一个测试项来做到这一点。如果这个过程没有抛出异常，那么函数返回`true`，表示`localStorage`是可用的。
+
+请注意，清理旧数据需要谨慎处理，以免删除用户期望保留的重要数据。一种可能的策略是实施一种基于时间戳或数据重要性的删除机制。
+
+最后，这个示例假设你希望处理存储空间超出限制的特定情况。在实际应用中，你可能还需要处理其他潜在的错误情况，比如浏览器不支持`localStorage`等。
+
 # *优雅的编程技巧
 
 
