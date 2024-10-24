@@ -3133,6 +3133,45 @@ safeSetItem('myKey', 'myValue');
 
 最后，这个示例假设你希望处理存储空间超出限制的特定情况。在实际应用中，你可能还需要处理其他潜在的错误情况，比如浏览器不支持`localStorage`等。
 
+
+
+## 字符串数值的大小判断为什么会不准确
+
+字符串数值的比较可能会不准确，是因为在JavaScript中，字符串是按照字符的Unicode码点值进行字典序比较的，而不是按照它们所代表的数值大小进行比较。这意味着字符串比较是基于每个字符的ASCII或Unicode值，而不是基于整个字符串所表示的数值。
+
+例如，如果你尝试比较字符串`"10"`和`"2"`，由于字符串比较是基于字符的，`"10"`会被认为是小于`"2"`的，因为`"1"`的Unicode值小于`"2"`的Unicode值，而不会考虑`"10"`作为一个整体数值实际上是大于`"2"`的。
+
+为了进行准确的数值比较，你需要将字符串转换为数字类型（如`Number`、`parseInt`或`parseFloat`），然后再进行比较。这样可以确保比较是基于数值大小，而不是基于字符串的字典序。
+
+下面是一个例子，展示了字符串数值比较可能会导致的不准确结果：
+
+```js
+let str1 = "10";  
+let str2 = "2";  
+  
+// 字符串比较（不准确）  
+if (str1 < str2) {  
+    console.log(str1 + " is less than " + str2); // 错误地输出 "10 is less than 2"  
+} else if (str1 > str2) {  
+    console.log(str1 + " is greater than " + str2);  
+} else {  
+    console.log(str1 + " is equal to " + str2);  
+}  
+  
+// 数值比较（准确）  
+let num1 = Number(str1);  
+let num2 = Number(str2);  
+if (num1 < num2) {  
+    console.log(str1 + " as a number is less than " + str2 + " as a number");  
+} else if (num1 > num2) {  
+    console.log(str1 + " as a number is greater than " + str2 + " as a number"); // 正确输出 "10 as a number is greater than 2 as a number"  
+} else {  
+    console.log(str1 + " as a number is equal to " + str2 + " as a number");  
+}
+```
+
+在上面的例子中，第一个比较（字符串比较）是不准确的，而第二个比较（数值比较）是准确的。
+
 # *优雅的编程技巧
 
 
@@ -3473,3 +3512,29 @@ export default {
 ```
 
 注意，在函数式组件中，props 作为第二个参数传递给 render 方法。
+
+# *编译工具
+
+## vscode
+
+### 如何调整页面大小
+
+**要调整VSCode左侧的功能栏大小，‌可以通过调整整体界面缩放比例来实现。‌**具体操作步骤如下：‌
+
+1.  
+
+   **使用快捷键调整界面缩放比例**：‌
+
+   - 放大界面：‌使用`Ctrl + =`快捷键可以放大整体界面的缩放比例。‌
+   - 缩小界面：‌使用`Ctrl -`快捷键可以缩小整体界面的缩放比例。‌
+   - 缩小放大代码界面：使用`Ctrl -鼠标滚轮`快捷键可以缩小代码界面的缩放比例。‌
+
+2.  
+
+   **通过设置文件调整缩放比例**：‌
+
+   - 打开设置文件：‌可以通过`Ctrl+Shift+P`调出命令面板，‌然后输入并选择“首选项：‌打开设置(JSON)”来编辑settings.json文件。‌
+   - 调整缩放级别：‌在settings.json文件中，‌可以添加或修改`"window.zoomLevel"`的值来调整缩放级别。‌例如，‌将`"window.zoomLevel"`设置为0.8或0.9可以有效地缩小左侧功能栏的显示大小，‌从而使其看起来更小。‌
+
+通过上述方法，‌你可以根据个人偏好调整VSCode左侧功能栏的大小，‌以达到更舒适的编程体验。‌
+
