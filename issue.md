@@ -2705,7 +2705,7 @@ treer -i "/^regex$/"//忽略目录或文件  treer -i "/node_modules/"
 
 
 
-#*javascript
+#*JavaScript
 
 ##比较两个数组对象中相同的项
 
@@ -3176,7 +3176,7 @@ if (num1 < num2) {
 
 
 
-#*项目架构（VUE）
+#*前端框架
 
 ##vue
 
