@@ -3172,6 +3172,43 @@ if (num1 < num2) {
 
 在上面的例子中，第一个比较（字符串比较）是不准确的，而第二个比较（数值比较）是准确的。
 
+
+
+													# *CSS
+
+###  content: attr(data-label)
+
+`content: attr(data-label)` 这段代码是在CSS（层叠样式表）中使用的一个属性值选择器与伪元素的结合示例。这里解释一下它的含义和作用：
+
+- `content`：这是CSS中一个伪元素（如`::before`或`::after`）的属性，用于在元素的内容之前或之后插入内容。
+- `attr(data-label)`：这是一个函数，用于获取HTML元素上指定的属性（在这个例子中是`data-label`属性）的值。`data-`前缀允许我们在HTML元素上添加自定义数据属性，而不需要任何JavaScript。
+
+结合起来，`content: attr(data-label)` 的意思是：在CSS伪元素中插入的内容将等于该HTML元素上`data-label`属性的值。
+
+例如，假设我们有以下HTML代码：
+
+```html
+<div data-label="示例标签:">12</div>
+```
+
+以及以下CSS代码：
+
+```css
+div::before {  
+  content: attr(data-label);  
+}
+```
+
+这段CSS代码的作用是在`<div>`元素的内容之前插入文本“示例标签”，因为这个值是`<div>`元素的`data-label`属性的值。
+
+需要注意的是，`content`属性通常与`::before`或`::after`伪元素一起使用，因为它们用于在元素的内容之前或之后插入内容。而`attr()`函数则是获取元素属性的值，并将其用作CSS属性的值。
+
+页面显示：示例标签:12
+
+
+
+
+
 # *优雅的编程技巧
 
 
@@ -3386,11 +3423,11 @@ render: function (createElement) {
 
 要创建 VNode，可以调用 createElement 函数，该函数接受三个参数：
 
-标签名或组件名
+1.标签名或组件名
 
-可选的属性对象
+2.可选的属性对象
 
-子节点数组
+3.子节点数组
 
 例如，下面的代码创建了一个包含文本节点的 div 元素：
 
@@ -3469,7 +3506,7 @@ methods: {
 例如，下面的代码使用了 JSX 语法来创建一个计数器组件：
 
 ```js
-import Vue from 'vue'
+import Vue from 'vue'   //这里导入了Vue
 
 export default {
     render() {
@@ -3491,7 +3528,7 @@ export default {
 }
 ```
 
-注意，在使用 JSX 时，需要使用 {} 包裹 JavaScript 表达式。
+`注意，在使用 JSX 时，需要使用 {} 包裹 JavaScript 表达式。`
 
 ##### 4.5 生成函数式组件
 
@@ -3506,7 +3543,7 @@ export default {
   functional: true,
   props: ['item'],
   render: function (createElement, context) {
-    return createElement('li', context.props.item);
+    return createElement('li', context.props.item);//这里的第二个参数就是传给render方法的props
   }
 }
 ```
